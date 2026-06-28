@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { TrendingDown, TrendingUp, Award, AlertCircle } from 'lucide-react'
+import { TrendingDown, Award } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import BottomNav from '../components/BottomNav'
+import MenuButton from '../components/MenuButton'
 import { useApp } from '../App'
 
 const WEIGHT_DATA = [
@@ -94,8 +94,11 @@ export default function Insights() {
     <div className="screen bg-ch-bg">
       {/* Header */}
       <div className="bg-white border-b border-ch-border px-4 pt-12 pb-4">
-        <h1 className="text-xl font-bold text-ch-text">Insights</h1>
-        <p className="text-xs text-ch-muted mt-0.5">Your personalized report card</p>
+        <div className="flex items-center gap-3 mb-1">
+          <MenuButton />
+          <h1 className="text-xl font-bold text-ch-text">Insights</h1>
+        </div>
+        <p className="text-xs text-ch-muted mt-0.5 ml-12">Your personalized report card</p>
 
         {/* Period toggle */}
         <div className="flex mt-3 bg-ch-bg rounded-xl p-0.5">
@@ -220,8 +223,6 @@ export default function Insights() {
 
         <div className="h-4" />
       </div>
-
-      <BottomNav />
     </div>
   )
 }

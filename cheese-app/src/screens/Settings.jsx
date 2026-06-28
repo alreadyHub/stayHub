@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { ChevronRight, Bell, Moon, Zap, Target, Scale, LogOut } from 'lucide-react'
+import { ChevronRight, Bell, Zap, Target, Scale, LogOut } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import BottomNav from '../components/BottomNav'
+import MenuButton from '../components/MenuButton'
 import { useApp } from '../App'
 
 function Toggle({ value, onChange }) {
@@ -50,7 +50,10 @@ export default function Settings() {
     <div className="screen bg-ch-bg">
       {/* Header */}
       <div className="bg-white border-b border-ch-border px-4 pt-12 pb-4">
-        <h1 className="text-xl font-bold text-ch-text">Settings</h1>
+        <div className="flex items-center gap-3">
+          <MenuButton />
+          <h1 className="text-xl font-bold text-ch-text">Settings</h1>
+        </div>
       </div>
 
       <div className="scroll-area px-4 py-4 flex flex-col gap-4">
@@ -156,8 +159,6 @@ export default function Settings() {
 
         <div className="h-4" />
       </div>
-
-      <BottomNav />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Search, Plus, RotateCcw, Star } from 'lucide-react'
+import { Search, Plus, RotateCcw } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import BottomNav from '../components/BottomNav'
+import MenuButton from '../components/MenuButton'
 
 const FOODS = [
   { id: 1, name: '3 eggs scrambled', cal: 210, protein: 18, carbs: 2, fat: 14, freq: 5, type: 'food' },
@@ -90,8 +90,11 @@ export default function Library() {
     <div className="screen bg-ch-bg">
       {/* Header */}
       <div className="bg-white border-b border-ch-border px-4 pt-12 pb-4">
-        <h1 className="text-xl font-bold text-ch-text">My Library</h1>
-        <p className="text-xs text-ch-muted mt-0.5">Your saved foods and meals</p>
+        <div className="flex items-center gap-3 mb-1">
+          <MenuButton />
+          <h1 className="text-xl font-bold text-ch-text">My Library</h1>
+        </div>
+        <p className="text-xs text-ch-muted mt-0.5 ml-12">Your saved foods and meals</p>
 
         {/* Search */}
         <div className="mt-3 flex items-center gap-2 bg-ch-bg rounded-xl px-3 py-2.5 border border-ch-border">
@@ -152,8 +155,6 @@ export default function Library() {
 
         <div className="h-4" />
       </div>
-
-      <BottomNav />
     </div>
   )
 }

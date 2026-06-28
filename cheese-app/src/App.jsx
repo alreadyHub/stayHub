@@ -8,6 +8,7 @@ import Insights from './screens/Insights'
 import BodyProgress from './screens/BodyProgress'
 import Upgrade from './screens/Upgrade'
 import Settings from './screens/Settings'
+import Sidebar from './components/Sidebar'
 
 export const AppContext = createContext(null)
 
@@ -29,12 +30,22 @@ const initialUser = {
   totalMessages: 20,
 }
 
+function AppLayout({ children }) {
+  return (
+    <div className="relative w-full h-full">
+      {children}
+      <Sidebar />
+    </div>
+  )
+}
+
 export default function App() {
   const [onboarded, setOnboarded] = useState(false)
   const [user, setUser] = useState(initialUser)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <AppContext.Provider value={{ user, setUser, onboarded, setOnboarded }}>
+    <AppContext.Provider value={{ user, setUser, onboarded, setOnboarded, sidebarOpen, setSidebarOpen }}>
       <div className="phone-shell">
         <HashRouter>
           <Routes>
@@ -42,14 +53,14 @@ export default function App() {
               ? <Route path="*" element={<Onboarding />} />
               : <>
                   <Route path="/" element={<Navigate to="/chat" replace />} />
-                  <Route path="/chat" element={<Chat />} />
-                  <Route path="/diary" element={<Diary />} />
-                  <Route path="/library" element={<Library />} />
-                  <Route path="/insights" element={<Insights />} />
-                  <Route path="/body" element={<BodyProgress />} />
-                  <Route path="/upgrade" element={<Upgrade />} />
-                  <Route path="/settings" element={<Settings />} />
-                  <Route path="*" element={<Navigate to="/chat" replace />} />
+                  <Route path="/chat"     element={<AppLayout><Chat /></AppLayout>} />
+                  <Route path="/diary"    element={<AppLayout><Diary /></AppLayout>} />
+                  <Route path="/library"  element={<AppLayout><Library /></AppLayout>} />
+                  <Route path="/insights" element={<AppLayout><Insights /></AppLayout>} />
+                  <Route path="/body"     element={<AppLayout><BodyProgress /></AppLayout>} />
+                  <Route path="/upgrade"  element={<Upgrade />} />
+                  <Route path="/settings" element={<AppLayout><Settings /></AppLayout>} />
+                  <Route path="*"         element={<Navigate to="/chat" replace />} />
                 </>
             }
           </Routes>

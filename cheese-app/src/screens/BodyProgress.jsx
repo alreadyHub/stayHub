@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Camera, Info, TrendingDown, Lock } from 'lucide-react'
+import { Camera, Info, TrendingDown } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import BottomNav from '../components/BottomNav'
+import MenuButton from '../components/MenuButton'
 import { useApp } from '../App'
 
 const ESTIMATES = [
@@ -48,7 +48,6 @@ export default function BodyProgress() {
           <button onClick={() => navigate(-1)} className="text-ch-muted text-sm">Go back</button>
         </div>
 
-        <BottomNav />
       </div>
     )
   }
@@ -57,9 +56,12 @@ export default function BodyProgress() {
     <div className="screen bg-ch-bg">
       <div className="bg-white border-b border-ch-border px-4 pt-12 pb-4">
         <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-bold text-ch-text">Body Progress</h1>
-            <p className="text-xs text-ch-muted mt-0.5">Estimated body composition</p>
+          <div className="flex items-center gap-3">
+            <MenuButton />
+            <div>
+              <h1 className="text-xl font-bold text-ch-text">Body Progress</h1>
+              <p className="text-xs text-ch-muted mt-0.5">Estimated body composition</p>
+            </div>
           </div>
           <button
             onClick={() => setShowDisclaimer(d => !d)}
@@ -121,8 +123,6 @@ export default function BodyProgress() {
 
         <div className="h-4" />
       </div>
-
-      <BottomNav />
     </div>
   )
 }

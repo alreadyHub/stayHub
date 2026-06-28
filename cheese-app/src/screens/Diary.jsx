@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Plus, ChevronRight, Pencil, Trash2 } from 'lucide-react'
+import { Plus, Pencil } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import BottomNav from '../components/BottomNav'
+import MenuButton from '../components/MenuButton'
 import { useApp } from '../App'
 
 const MEALS = [
@@ -64,8 +64,11 @@ export default function Diary() {
     <div className="screen bg-ch-bg">
       {/* Header */}
       <div className="bg-white border-b border-ch-border px-4 pt-12 pb-4">
-        <h1 className="text-xl font-bold text-ch-text">Today's Diary</h1>
-        <p className="text-xs text-ch-muted mt-0.5">
+        <div className="flex items-center gap-3 mb-1">
+          <MenuButton />
+          <h1 className="text-xl font-bold text-ch-text">Today's Diary</h1>
+        </div>
+        <p className="text-xs text-ch-muted mt-0.5 ml-12">
           {new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
         </p>
 
@@ -191,8 +194,6 @@ export default function Diary() {
 
         <div className="h-2" />
       </div>
-
-      <BottomNav />
     </div>
   )
 }

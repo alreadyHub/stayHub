@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import { Send, Camera, Zap, ChevronUp } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import BottomNav from '../components/BottomNav'
 import CalorieRing from '../components/CalorieRing'
 import MacroBar from '../components/MacroBar'
+import MenuButton from '../components/MenuButton'
 import { useApp } from '../App'
 
 const getGreeting = (name) => {
@@ -141,16 +141,17 @@ export default function Chat() {
       {/* Header */}
       <div className="bg-white border-b border-ch-border px-4 pt-12 pb-0">
         <div className="flex items-center justify-between mb-3">
-          <div>
-            <h1 className="text-base font-bold text-ch-text">{getGreeting(user.name)}</h1>
-            <p className="text-xs text-ch-muted">
-              {user.goal === 'cut' ? '🔥 Cutting' : user.goal === 'bulk' ? '💪 Bulking' : '⚖️ Maintaining'}
-              {' · '}Today
-            </p>
-          </div>
           <div className="flex items-center gap-3">
-            <CalorieRing consumed={consumed.cal} total={user.calories} size={72} />
+            <MenuButton />
+            <div>
+              <h1 className="text-base font-bold text-ch-text">{getGreeting(user.name)}</h1>
+              <p className="text-xs text-ch-muted">
+                {user.goal === 'cut' ? '🔥 Cutting' : user.goal === 'bulk' ? '💪 Bulking' : '⚖️ Maintaining'}
+                {' · '}Today
+              </p>
+            </div>
           </div>
+          <CalorieRing consumed={consumed.cal} total={user.calories} size={72} />
         </div>
 
         {/* Macro summary */}
@@ -249,7 +250,6 @@ export default function Chat() {
         )}
       </div>
 
-      <BottomNav />
     </div>
   )
 }
