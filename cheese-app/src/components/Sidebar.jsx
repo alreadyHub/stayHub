@@ -36,12 +36,13 @@ export default function Sidebar() {
 
       {/* Drawer */}
       <div
-        className={`fixed top-0 left-0 h-full z-50 w-72 bg-white flex flex-col shadow-2xl transition-transform duration-300 ease-in-out ${
+        style={{ height: '100dvh' }}
+        className={`fixed top-0 left-0 z-50 w-72 bg-white flex flex-col shadow-2xl transition-transform duration-300 ease-in-out ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-5 pt-14 pb-5 border-b border-ch-border">
+        <div className="flex items-center justify-between px-5 pb-5 border-b border-ch-border safe-top">
           <div className="flex items-center gap-2.5">
             <span className="text-2xl">🧀</span>
             <span className="text-lg font-bold text-ch-text tracking-tight">Cheese</span>
@@ -106,7 +107,7 @@ export default function Sidebar() {
         </nav>
 
         {/* Bottom: upgrade or goal progress */}
-        <div className="px-4 pb-8 pt-3 border-t border-ch-border">
+        <div className="px-4 pt-3 border-t border-ch-border safe-bottom">
           {!user.isPremium ? (
             <button
               onClick={() => go('/upgrade')}
