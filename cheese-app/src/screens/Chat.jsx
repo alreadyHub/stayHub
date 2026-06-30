@@ -226,7 +226,7 @@ export default function Chat() {
             </button>
           </div>
           {!msgWarning && (
-            <div className="px-4 pb-3 -mt-0.5">
+            <div className="px-4 pb-1 -mt-0.5">
               <div className="flex justify-between text-[10px] text-ch-muted mb-1">
                 <span>{user.messagesLeft} messages left today</span>
                 <span>Resets midnight</span>
