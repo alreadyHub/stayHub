@@ -138,7 +138,7 @@ export default function Chat() {
   return (
     <div className="screen relative bg-ch-bg">
       {/* Header */}
-      <div className="bg-white border-b border-ch-border px-4 pt-12 pb-0">
+      <div className="bg-white border-b border-ch-border px-4 pt-4 pb-0">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             <MenuButton />
