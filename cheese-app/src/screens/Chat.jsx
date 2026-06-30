@@ -136,7 +136,7 @@ export default function Chat() {
   const msgWarning = user.messagesLeft <= 5
 
   return (
-    <div className="screen bg-ch-bg">
+    <div className="screen relative bg-ch-bg">
       {/* Header */}
       <div className="bg-white border-b border-ch-border px-4 pt-12 pb-0">
         <div className="flex items-center justify-between mb-3">
@@ -162,7 +162,7 @@ export default function Chat() {
       </div>
 
       {/* Messages */}
-      <div className="scroll-area px-4 py-4 flex flex-col gap-4">
+      <div className="scroll-area px-4 py-4 flex flex-col gap-4 pb-36">
         {messages.map(msg =>
           msg.role === 'coach'
             ? <CoachBubble key={msg.id} msg={msg} />
@@ -171,68 +171,72 @@ export default function Chat() {
         <div ref={bottomRef} />
       </div>
 
-      {/* Message counter */}
-      {msgWarning && (
-        <div
-          onClick={() => navigate('/upgrade')}
-          className="mx-4 mb-2 bg-ch-amber/10 border border-ch-amber/30 rounded-xl px-3 py-2 flex items-center justify-between cursor-pointer"
-        >
-          <span className="text-xs text-ch-amber font-medium">
-            {user.messagesLeft} messages left today
-          </span>
-          <span className="text-xs text-ch-amber font-semibold">Upgrade →</span>
-        </div>
-      )}
+      {/* Floating input */}
+      <div className="absolute bottom-0 left-0 right-0 px-3 pb-4 safe-bottom">
+        {/* Fade gradient so messages fade out naturally above the input */}
+        <div className="pointer-events-none absolute bottom-full left-0 right-0 h-12 bg-gradient-to-t from-ch-bg to-transparent" />
 
-      {/* Input */}
-      <div className="bg-white border-t border-ch-border px-3 py-3 safe-bottom">
-        <div className="flex items-end gap-2">
-          {!user.isPremium ? (
-            <button
-              onClick={() => navigate('/upgrade')}
-              className="flex-shrink-0 w-10 h-10 rounded-xl bg-ch-border/50 flex items-center justify-center relative"
-            >
-              <Camera size={18} className="text-ch-muted" />
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-ch-yellow rounded-full flex items-center justify-center">
-                <span className="text-[8px] font-bold text-ch-text">✦</span>
-              </div>
-            </button>
-          ) : (
-            <button className="flex-shrink-0 w-10 h-10 rounded-xl bg-ch-yellow/20 flex items-center justify-center">
-              <Camera size={18} className="text-ch-yellow" />
-            </button>
-          )}
-          <div className="flex-1 bg-ch-chat rounded-2xl flex items-end px-4 py-2.5 min-h-[42px]">
-            <textarea
-              ref={inputRef}
-              rows={1}
-              placeholder="Log a meal, ask what to eat..."
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              onKeyDown={handleKey}
-              className="flex-1 bg-transparent text-sm text-ch-text resize-none placeholder:text-ch-muted/60 leading-5 max-h-24"
-              style={{ outline: 'none', border: 'none' }}
-            />
-          </div>
-          <button
-            onClick={sendMessage}
-            disabled={!input.trim()}
-            className="flex-shrink-0 w-10 h-10 rounded-xl bg-ch-yellow flex items-center justify-center disabled:opacity-40 transition-opacity"
+        {msgWarning && (
+          <div
+            onClick={() => navigate('/upgrade')}
+            className="mb-2 bg-ch-amber/10 border border-ch-amber/30 rounded-2xl px-3 py-2.5 flex items-center justify-between cursor-pointer"
           >
-            <Send size={16} className="text-ch-text" strokeWidth={2.5} />
-          </button>
-        </div>
-        {!msgWarning && (
-          <div className="mt-1.5 mx-1">
-            <div className="flex justify-between text-[10px] text-ch-muted mb-1">
-              <span>{user.messagesLeft} messages left today</span>
-              <span>Resets midnight</span>
-            </div>
-            <div className="h-0.5 bg-ch-border rounded-full overflow-hidden">
-              <div className="h-full bg-ch-yellow rounded-full" style={{ width: `${remainingPct * 100}%` }} />
-            </div>
+            <span className="text-xs text-ch-amber font-medium">
+              {user.messagesLeft} messages left today
+            </span>
+            <span className="text-xs text-ch-amber font-semibold">Upgrade →</span>
           </div>
         )}
+
+        <div className="bg-white rounded-3xl shadow-lg shadow-black/10 border border-ch-border/60">
+          <div className="flex items-end gap-2 px-3 pt-3 pb-2.5">
+            {!user.isPremium ? (
+              <button
+                onClick={() => navigate('/upgrade')}
+                className="flex-shrink-0 w-9 h-9 rounded-xl bg-ch-border/40 flex items-center justify-center relative"
+              >
+                <Camera size={17} className="text-ch-muted" />
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-ch-yellow rounded-full flex items-center justify-center">
+                  <span className="text-[8px] font-bold text-ch-text">✦</span>
+                </div>
+              </button>
+            ) : (
+              <button className="flex-shrink-0 w-9 h-9 rounded-xl bg-ch-yellow/20 flex items-center justify-center">
+                <Camera size={17} className="text-ch-yellow" />
+              </button>
+            )}
+            <div className="flex-1 flex items-end min-h-[36px]">
+              <textarea
+                ref={inputRef}
+                rows={1}
+                placeholder="Log a meal, ask what to eat..."
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                onKeyDown={handleKey}
+                className="flex-1 bg-transparent text-sm text-ch-text resize-none placeholder:text-ch-muted/50 leading-5 max-h-24 py-1"
+                style={{ outline: 'none', border: 'none' }}
+              />
+            </div>
+            <button
+              onClick={sendMessage}
+              disabled={!input.trim()}
+              className="flex-shrink-0 w-9 h-9 rounded-xl bg-ch-yellow flex items-center justify-center disabled:opacity-35 transition-opacity"
+            >
+              <Send size={15} className="text-ch-text" strokeWidth={2.5} />
+            </button>
+          </div>
+          {!msgWarning && (
+            <div className="px-4 pb-3 -mt-0.5">
+              <div className="flex justify-between text-[10px] text-ch-muted mb-1">
+                <span>{user.messagesLeft} messages left today</span>
+                <span>Resets midnight</span>
+              </div>
+              <div className="h-0.5 bg-ch-border rounded-full overflow-hidden">
+                <div className="h-full bg-ch-yellow rounded-full transition-all" style={{ width: `${remainingPct * 100}%` }} />
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
     </div>
