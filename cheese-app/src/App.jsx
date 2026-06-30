@@ -40,7 +40,7 @@ function AppLayout({ children }) {
 }
 
 export default function App() {
-  const [onboarded, setOnboarded] = useState(false)
+  const [onboarded, setOnboarded] = useState(true) // temporarily disabled
   const [user, setUser] = useState(initialUser)
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
