@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Send, Camera, Zap, ChevronUp } from 'lucide-react'
+import { Send, Camera, Zap } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import CalorieRing from '../components/CalorieRing'
 import MacroBar from '../components/MacroBar'
@@ -90,7 +90,6 @@ export default function Chat() {
   const navigate = useNavigate()
   const [messages, setMessages] = useState(INITIAL_MESSAGES)
   const [input, setInput] = useState('')
-  const [macrosExpanded, setMacrosExpanded] = useState(false)
   const bottomRef = useRef(null)
   const inputRef = useRef(null)
 
@@ -154,26 +153,12 @@ export default function Chat() {
           <CalorieRing consumed={consumed.cal} total={user.calories} size={72} />
         </div>
 
-        {/* Macro summary */}
-        <button
-          onClick={() => setMacrosExpanded(e => !e)}
-          className="w-full flex items-center gap-2 py-2 text-[11px] text-ch-muted font-medium"
-        >
-          <ChevronUp size={14} className={`transition-transform ${macrosExpanded ? '' : 'rotate-180'}`} />
-          Macros
-          <div className="flex-1 flex gap-3 ml-2">
-            <span className="text-ch-green font-semibold">{consumed.protein}g / {user.protein}g protein</span>
-            <span className="text-ch-blue font-semibold">{consumed.carbs}g / {user.carbs}g carbs</span>
-          </div>
-        </button>
-
-        {macrosExpanded && (
-          <div className="flex gap-4 pb-3 fade-in">
-            <MacroBar label="Protein" current={consumed.protein} total={user.protein} color="#34C77B" />
-            <MacroBar label="Carbs" current={consumed.carbs} total={user.carbs} color="#4A90D9" />
-            <MacroBar label="Fat" current={consumed.fat} total={user.fat} color="#F59B42" />
-          </div>
-        )}
+        {/* Macro bars — always visible */}
+        <div className="flex gap-4 py-3">
+          <MacroBar label="Protein" current={consumed.protein} total={user.protein} color="#34C77B" />
+          <MacroBar label="Carbs" current={consumed.carbs} total={user.carbs} color="#4A90D9" />
+          <MacroBar label="Fat" current={consumed.fat} total={user.fat} color="#F59B42" />
+        </div>
       </div>
 
       {/* Messages */}
