@@ -1,0 +1,25 @@
+{
+  "name": "Cheese",
+  "short_name": "Cheese",
+  "description": "The AI nutrition coach that teaches you while you track.",
+  "start_url": "/stayHub/",
+  "scope": "/stayHub/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F5C518",
+  "theme_color": "#F5C518",
+  "icons": [
+    {
+      "src": "/stayHub/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/stayHub/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
