@@ -63,7 +63,7 @@ export default function Diary() {
   return (
     <div className="screen bg-ch-bg">
       {/* Header */}
-      <div className="bg-white border-b border-ch-border px-4 pt-12 pb-4">
+      <div className="bg-white border-b border-ch-border px-4 pb-4 safe-top">
         <div className="flex items-center gap-3 mb-1">
           <MenuButton />
           <h1 className="text-xl font-bold text-ch-text">Today's Diary</h1>

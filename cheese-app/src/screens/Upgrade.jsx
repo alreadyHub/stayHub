@@ -26,7 +26,7 @@ export default function Upgrade() {
     <div className="screen bg-ch-bg">
       <div className="scroll-area">
         {/* Hero */}
-        <div className="bg-ch-text px-6 pt-14 pb-8 relative overflow-hidden">
+        <div className="bg-ch-text px-6 pb-8 safe-top relative overflow-hidden">
           <button
             onClick={() => navigate(-1)}
             className="absolute top-12 left-4 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center"

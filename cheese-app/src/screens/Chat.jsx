@@ -138,7 +138,7 @@ export default function Chat() {
   return (
     <div className="screen relative bg-ch-bg">
       {/* Header */}
-      <div className="bg-white border-b border-ch-border px-4 pt-4 pb-0">
+      <div className="bg-white border-b border-ch-border px-4 pb-0 safe-top">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
             <MenuButton />
@@ -172,7 +172,7 @@ export default function Chat() {
       </div>
 
       {/* Floating input */}
-      <div className="absolute bottom-0 left-0 right-0 px-3 pb-4 safe-bottom">
+      <div className="absolute bottom-0 left-0 right-0 px-3 bg-ch-bg safe-bottom">
         {/* Fade gradient so messages fade out naturally above the input */}
         <div className="pointer-events-none absolute bottom-full left-0 right-0 h-12 bg-gradient-to-t from-ch-bg to-transparent" />
 

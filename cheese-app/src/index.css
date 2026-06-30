@@ -70,6 +70,10 @@ input, textarea {
   animation: pop 0.2s ease both;
 }
 
+.safe-top {
+  padding-top: max(16px, env(safe-area-inset-top));
+}
+
 .safe-bottom {
-  padding-bottom: env(safe-area-inset-bottom, 16px);
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
 }

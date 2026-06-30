@@ -18,7 +18,7 @@ export default function BodyProgress() {
   if (!user.isPremium) {
     return (
       <div className="screen bg-ch-bg">
-        <div className="bg-white border-b border-ch-border px-4 pt-12 pb-4">
+        <div className="bg-white border-b border-ch-border px-4 pb-4 safe-top">
           <h1 className="text-xl font-bold text-ch-text">Body Progress</h1>
           <p className="text-xs text-ch-muted mt-0.5">Track body composition over time</p>
         </div>
@@ -54,7 +54,7 @@ export default function BodyProgress() {
 
   return (
     <div className="screen bg-ch-bg">
-      <div className="bg-white border-b border-ch-border px-4 pt-12 pb-4">
+      <div className="bg-white border-b border-ch-border px-4 pb-4 safe-top">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <MenuButton />
