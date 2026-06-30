@@ -172,7 +172,7 @@ export default function Chat() {
       </div>
 
       {/* Floating input */}
-      <div className="absolute bottom-0 left-0 right-0 px-3 bg-ch-bg" style={{ paddingBottom: 'max(20px, env(safe-area-inset-bottom))' }}>
+      <div className="absolute bottom-0 left-0 right-0 px-3 bg-ch-bg pb-2">
         {/* Fade gradient so messages fade out naturally above the input */}
         <div className="pointer-events-none absolute bottom-full left-0 right-0 h-12 bg-gradient-to-t from-ch-bg to-transparent" />
 
